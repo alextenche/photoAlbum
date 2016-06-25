@@ -18,16 +18,25 @@ $(document).ready(function(){
 
       $('.gallery_preload_area').html('<img src="' + photo_preview + '"/>');
       $('.gallery_preload_area img').imgpreload(function(){
-        $('.gallery_preview').html('<a href="' + photo_fullsize + '" title="' + photo_caption + '" style="background-image:url(' + photo_preview + ');"><img src="'+ photo_preview+'"/></a>');
-        $('.gallery_caption').html('<p><a href="'+photo_fullsize+'" title="'+photo_caption+'">view larger</a></p><p>'+photo_caption+'</p>');
+        $('.gallery_preview').html('<a class="overlaylink" href="' + photo_fullsize + '" title="' + photo_caption + '" style="background-image:url(' + photo_preview + ');"><img src="'+ photo_preview+'"/></a>');
+        $('.gallery_caption').html('<p><a class="overlaylink" href="'+photo_fullsize+'" title="'+photo_caption+'">view larger</a></p><p>'+photo_caption+'</p>');
         $('.gallery_preview').fadeIn(500);
         $('.gallery_caption').slideDown(500);
+
+        setFancyboxLinks();
       });
 
     });
-
-
   });
-
-
 });
+
+function setFancyboxLinks(){
+  $('a.overlaylink').fancybox({
+    'titlePosition': 'over',
+    'ovelayColor': '#000',
+    'ovelayOpacity': 0.0,
+    'transitionOut': 'elastic',
+    'transitionIn': 'elastic',
+    'autoScale': true
+  });
+}
